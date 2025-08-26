@@ -9,7 +9,7 @@
     top: 5%;
     min-width: 90%;
     min-height: 90%;
-  }  
+  }
 }
 @media only screen and (min-width: 769px) {
   .container {
@@ -44,9 +44,9 @@
 .data .form button {
   margin-top: 2em;
   display: inline;
-  background-color: #3B64CE;
-  border: 1px solid #3B64CE;
-  color: #FFF;
+  background-color: #3b64ce;
+  border: 1px solid #3b64ce;
+  color: #fff;
   min-width: 50px;
   text-align: center;
   box-shadow: 2px 2px 2px #000000;
@@ -61,4 +61,33 @@
   background-color: #504869;
   border: 1px solid #504869;
   box-shadow: 1.5px 1.5px 2px #808080;
+}
+
+.imc-table-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imc-table {
+  font-family: arial, sans-serif;
+  width: 60%;
+  border: 2px solid black;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.current-imc {
+  background-color: red;
 }

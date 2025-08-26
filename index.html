@@ -1,32 +1,64 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Calculadora IMC</title>
-        <link rel="stylesheet" href="index.css">
-    </head>
-    <body>
-        <div class="container">
-            <div class="data">
-                <div class="form">
-                    <form>
-                        <div class="row">
-                            <label>Altura:</label>
-                            <input type="text" id="altura" placeholder="Digite sua altura (em metros)" />
-                        </div>
-                        <div class="row">
-                            <label>Peso:</label>
-                            <input type="text" id="peso" placeholder="Digite seu peso (em kg)" />
-                        </div>
-                        <div class="row">
-                            <button type="submit" id="calcular">Calcular IMC</button>
-                        </div>
-                    </form>
-                </div>
+  <head>
+    <title>Calculadora IMC</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="data">
+        <div class="form">
+          <form>
+            <div class="row">
+              <label>Altura:</label>
+              <input
+                type="text"
+                id="altura"
+                placeholder="Digite sua altura (em metros)"
+              />
             </div>
-            <div class="data">
-                <p>Seu IMC &eacute; <span id="imc"></span></p>
+            <div class="row">
+              <label>Peso:</label>
+              <input
+                type="text"
+                id="peso"
+                placeholder="Digite seu peso (em kg)"
+              />
             </div>
+            <div class="row">
+              <button type="submit" id="calcular">Calcular IMC</button>
+            </div>
+          </form>
         </div>
-    </body>
-    <script lang="text/javascript" src="index.js"></script>
+      </div>
+      <div class="data">
+        <p>Seu IMC &eacute; <span id="imc"></span></p>
+      </div>
+      <div class="imc-table-container">
+        <table class="imc-table">
+          <tr>
+            <th>Classificação IMC</th>
+            <th>Intervalo de IMC</th>
+          </tr>
+          <tr>
+            <td>Abaixo do peso</td>
+            <td>Menor que 18.5</td>
+          </tr>
+          <tr>
+            <td>Peso normal</td>
+            <td>18.5 - 24.9</td>
+          </tr>
+          <tr>
+            <td>Sobrepeso</td>
+            <td>25.0 - 29.9</td>
+          </tr>
+          <tr>
+            <td>Obesidade</td>
+            <td>30.0 ou mais</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+  <script lang="text/javascript" src="index.js"></script>
 </html>
