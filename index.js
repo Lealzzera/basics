@@ -13,37 +13,38 @@ function Nutricionista(altura, peso) {
     return this.peso / (this.altura * this.altura);
   };
 
-  this.classificaIMC = function () {
-    var imc = this.imc();
-    if (imc < 18.5) {
-      return "Abaixo do peso";
-    }
-    if (imc >= 18.5 && imc < 24.9) {
-      return "Peso normal";
-    }
-    if (imc >= 25 && imc < 29.9) {
-      return "Sobrepeso";
-    }
+  this.classificaIMC = async function () {
+    console.log(altura, peso);
+    var response = await fetch("http://localhost:3000/imc/calculate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        height: altura,
+        weight: peso,
+      }),
+    });
+    var resJson = await response.json();
 
-    return "Obesidade";
+    return resJson.imcDescription;
   };
 }
 Nutricionista.prototype = Object.create(Pessoa.prototype);
 Nutricionista.prototype.constructor = Nutricionista;
 
-function renderizaResultadoIMC(nutricionista) {
+async function renderizaResultadoIMC(nutricionista) {
   var imcTableElements = document.querySelectorAll(".imc-table td");
+  var resultadoImc = await nutricionista.classificaIMC();
 
   document.getElementById("imc").innerText =
-    nutricionista.imc().toFixed(2) + " - " + nutricionista.classificaIMC();
+    nutricionista.imc().toFixed(2) + " - " + resultadoImc;
 
   imcTableElements.forEach((item) => {
     item.classList.remove("current-imc");
   });
 
-  var imcTableValue = Array.from(imcTableElements).find(
-    (item) => item.innerText === nutricionista.classificaIMC()
-  );
+  var imcTableValue = Array.from(imcTableElements).find((item) => {
+    return item.innerText.toLowerCase() === resultadoImc.toLowerCase();
+  });
 
   imcTableValue.classList.add("current-imc");
   imcTableValue.nextElementSibling.classList.add("current-imc");
